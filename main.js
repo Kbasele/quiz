@@ -1,14 +1,15 @@
 document.addEventListener("DOMContentLoaded", function (e){
-    let random = getRandomNumber()
-    
 
-    let shownquestion = document.getElementById("shown-question")
-    let answers = document.querySelectorAll(".answer")
+    document.getElementById("submit-button").addEventListener("click", function(e){
+        play.newQuestion(getRandomNumber());
+    })
 
-    shownquestion.innerHTML = questions[random].question
 
-    for(let i = 0; i < answers.length; i++){
-        answers[i].innerHTML = questions[random].alternativs[i]
-
+    let alternativs = document.getElementsByClassName("answer")
+    for(alternativ of alternativs){
+            alternativ.addEventListener("click", function(e){
+                this.style.backgroundColor="rgba(65, 105, 225, 0.5)"
+            })
     }
 })
+
