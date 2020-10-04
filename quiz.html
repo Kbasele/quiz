@@ -1,45 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="quiz.css">
-</head>
-<body>
+    <link rel="stylesheet" href="quiz.css" />
+  </head>
+  <body>
     <div class="container">
-        <div class="container-header">
-            <p>Question 1 of 5</p>
+      <div class="container-header">
+        <p>Quiz</p>
+      </div>
+      <hr />
+      <div class="container-body">
+        <div class="asked-question">
+          <p id="shown-question">Welcome!</p>
         </div>
-        <hr>
-        <div class="container-body">
-            <div class="asked-question">
-                <p id="shown-question">What color is Bananas?</p>
-            </div>
-            <div class="answers">
-                <ul>
-                    <li class="answer">1</li>
-                    <li class="answer">2</li>
-                    <li class="answer">3</li>
-                    <li class="answer">4</li>
-                </ul>
-            </div>
-            <div class="button-area">
-                <button id="submit-button" type="button" >Nästa</button>
-            </div>
+        <div class="answers">
+          <ul id="shown-Answers"></ul>
         </div>
-        <hr>
-        <div class="container-footer">
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
-            <div>4</div>
-
+        <div class="button-area">
+          <button id="question-btn" type="button">Start Game</button>
         </div>
+      </div>
+      <hr />
+      <div class="container-footer">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+      </div>
     </div>
     <script src="question.js"></script>
     <script src="main.js"></script>
-    <script src="playgame.js"></script>
-
-</body>
+    <script src="Game.js"></script>
+    <script src="fetch.js"></script>
+  </body>
 </html>

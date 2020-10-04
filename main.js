@@ -1,15 +1,19 @@
-document.addEventListener("DOMContentLoaded", function (e){
+document.addEventListener("DOMContentLoaded", async function (e) {
+   
 
-    document.getElementById("submit-button").addEventListener("click", function(e){
-        play.newQuestion(getRandomNumber());
+    let questions = await getQuestions();
+    
+    document.getElementById("question-btn").addEventListener("click", function(e){
+        e.target.innerHTML = "next"
+        questions.setNewQuestion()
+        let lastAnsweredQuestion = questions.userAnswers[questions.userAnswers.length - 1];
+        let rightAnswer = questions.userAnswers.answers;
+
+        questions.correctUserAnswer(rightAnswer, lastAnsweredQuestion)
+        console.log(questions.userAnswers)
     })
 
-
-    let alternativs = document.getElementsByClassName("answer")
-    for(alternativ of alternativs){
-            alternativ.addEventListener("click", function(e){
-                this.style.backgroundColor="rgba(65, 105, 225, 0.5)"
-            })
-    }
-})
+});
+//document, get question returnerar promise, await väntar så att getQuestions resolvar och
+//returnerar värdet och kör in det i Questions.
 
