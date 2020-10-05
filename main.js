@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", async function (e) {
         let rightAnswer = questions.userAnswers.answers;
 
         questions.correctUserAnswer(rightAnswer, lastAnsweredQuestion)
-        console.log(questions.userAnswers)
     })
 
 });
