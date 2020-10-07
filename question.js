@@ -13,7 +13,6 @@ class QuestionClass {
         this.userAnswers = [];
         this.usarAnswerFacit = [];
         
-
         for (let question of questionsArray) {
             this.questionsArray.push(new Question(question));   
         }      
@@ -29,7 +28,6 @@ class QuestionClass {
         resetBtn.value ="reset"
 
         shownAnswersUl.innerHTML = ""
-        
         for(let i = 0; i < Object.values(this.questionsArray[this.count].answers).length; ++i){
             if(Object.values(this.questionsArray[this.count].answers)[i] != null){
                 let newAnswers = document.createElement("li");
@@ -38,15 +36,8 @@ class QuestionClass {
                 
                 newAnswers.innerHTML = Object.values(this.questionsArray[this.count].answers)[i]
                 
-                let clickCount = 0; 
-                
                 newAnswers.addEventListener("click", e => {
-                    if(clickCount < 1){
-                        game.saveUserAnswer(this.userAnswers,this.questionsArray,this.count,i)
-                        game.getUserFacit(this.usarAnswerFacit,this.questionsArray,this.count,i)
                         newAnswers.style.backgroundColor =  "rgba(65, 105, 225, 0.5)"
-                    }
-                    ++clickCount
                 })
             }
         }
