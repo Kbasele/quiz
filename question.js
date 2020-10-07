@@ -1,5 +1,3 @@
-
-
 class Question {
     constructor(question) {
         this.question = question.question;
@@ -14,13 +12,12 @@ class QuestionClass {
         this.count = 0; 
         this.userAnswers = [];
         this.usarAnswerFacit = [];
+        
 
         for (let question of questionsArray) {
             this.questionsArray.push(new Question(question));   
         }      
     }
-    
-    
     setNewQuestion() { 
         let shownQuestion = document.getElementById("shown-question");
         let shownAnswersUl = document.getElementById("shown-Answers");
@@ -45,8 +42,8 @@ class QuestionClass {
                 
                 newAnswers.addEventListener("click", e => {
                     if(clickCount < 1){
-                        this.saveUserAnswer(newAnswers,i)
-                        this.getUserFacit(newAnswers,i)
+                        game.saveUserAnswer(this.userAnswers,this.questionsArray,this.count,i)
+                        game.getUserFacit(this.usarAnswerFacit,this.questionsArray,this.count,i)
                         newAnswers.style.backgroundColor =  "rgba(65, 105, 225, 0.5)"
                     }
                     ++clickCount
@@ -55,21 +52,7 @@ class QuestionClass {
         }
         this.count++
     }
-    saveUserAnswer(newAnswers, i){
-        this.userAnswers.push(Object.values(this.questionsArray[this.count-1].correctAnswers)[i])
-        console.log(this.userAnswers)
-        return this.userAnswers
-    }
-    getUserFacit(newAnswers, i){
-       
-        let facit = Object.values(this.questionsArray[this.count-1].correctAnswers).filter(questionsArray => questionsArray.includes("true"));
-        if(this.usarAnswerFacit.length < 1){
-            for(let current of facit){
-                this.usarAnswerFacit.push(current)
-            }
-        }
-        return this.usarAnswerFacit
-    }
+    
 }
 
 //resetBtn.addEventListener("click", e =>{

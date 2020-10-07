@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", async function (e) {
         e.target.innerHTML = "next"
         ++clickCount
 
-        questions.setNewQuestion()
 
         if(clickCount > 1){
-            questions.saveUserAnswer()
+            questions.setNewQuestion()
+
             //console.log(questions.getUserFacit())
             //game.checkIfCorrect(questions.saveUserAnswer,questions.saveUserAnswer)
         }
