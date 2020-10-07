@@ -21,8 +21,9 @@ class QuestionClass {
         }        
 
     }
-
-    setNewQuestion() {
+    
+    
+    setNewQuestion(whatToReturn) {
         this.userAnswers = []
         this.correcAnswers = []
         this.count++
@@ -89,16 +90,40 @@ class QuestionClass {
             }
         }
         shownQuestion.innerHTML = this.questionsArray[this.count].question;
+        if(whatToReturn == "userAnswer"){
+            console.log("answer")
+            //console.log(this.userAnswers)
+            //console.log(this.correcAnswers)
+            return this.userAnswers
+        }
+        else if(whatToReturn == "correcAnswers"){
+            console.log("correct")
+            return this.correcAnswers
+        }
+    }
+    getUserAnswer(){
+        this.correcAnswer = this.setNewQuestion("correcAnswers")
+        console.log(this.userAnswers)
         return this.userAnswers
     }
+
+    getCorrectAnswer(){
+        
+        this.correcAnswer = this.setNewQuestion("correcAnswers")
+        console.log(this.correcAnswers)
+        return this.correcAnswer
+    }
+
     //checkIfCorrect(userAnswers, correctAnswers){
-    //    this.setNewQuestion()
     //    console.log("Hej")
-    //    console.log(this.userAnswers)
-    //    if(this.userAnswers === correctAnswers){
+    //    console.log(userAnswers + correctAnswers)
+    //    if(userAnswers === correctAnswers){
     //        console.log("rätt!")
     //        console.log(userAnswers)
     //    }
+    //    else{
+    //        console.log("inte lika")
+    //    }
     //}
-//
+////
 }
