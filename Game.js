@@ -2,19 +2,14 @@ class Game{
     constructor(){
         
     }
-    checkIfCorrect(userAnswers){
-        let currentUserAnswers = userAnswers
-
-        console.log(currentUserAnswers)
-        //console.log("Hej")
-        //console.log(userAnswers + correctAnswers)
-        //if(userAnswers === correctAnswers){
-        //    console.log("rätt!")
-        //    console.log(userAnswers)
-        //}
-        //else{
-        //    console.log("inte lika")
-        //}
+    checkIfCorrect(saveUserAnswer, getUserFacit){
+        console.log(saveUserAnswer)
+        if(saveUserAnswer == getUserFacit){
+            console.log("rätt!")
+        }
+        else{
+            console.log("fel!")
+        }
     }
 
     

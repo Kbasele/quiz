@@ -13,31 +13,25 @@ class QuestionClass {
         this.questionsArray = [];
         this.count = 0; 
         this.userAnswers = [];
-        this.correcAnswers = [];
+        this.usarAnswerFacit = [];
 
         for (let question of questionsArray) {
-            this.questionsArray.push(new Question(question));
-            
-        }        
-
+            this.questionsArray.push(new Question(question));   
+        }      
     }
     
     
-    setNewQuestion(whatToReturn) {
-        this.userAnswers = []
-        this.correcAnswers = []
-        this.count++
-        
+    setNewQuestion() { 
         let shownQuestion = document.getElementById("shown-question");
         let shownAnswersUl = document.getElementById("shown-Answers");
-        
+
+        shownQuestion.innerHTML = this.questionsArray[this.count].question;
+
         let resetBtn = document.createElement("input")
         resetBtn.type ="button"
         resetBtn.value ="reset"
 
         shownAnswersUl.innerHTML = ""
-
-        let anotherCount = 0;
         
         for(let i = 0; i < Object.values(this.questionsArray[this.count].answers).length; ++i){
             if(Object.values(this.questionsArray[this.count].answers)[i] != null){
@@ -47,83 +41,41 @@ class QuestionClass {
                 
                 newAnswers.innerHTML = Object.values(this.questionsArray[this.count].answers)[i]
                 
-                let clickcount = 0; 
+                let clickCount = 0; 
                 
                 newAnswers.addEventListener("click", e => {
-                    ++clickcount
-                    if(clickcount > 1){
-                        clickcount = 0; 
-                        
-                    }
-                    else{
-                        resetBtn.addEventListener("click", e =>{
-                            clickcount = 0; 
-                            anotherCount = 0; 
-                            newAnswers.style.backgroundColor = "rgba(182, 182, 182, 0.459)";
-                            this.userAnswers = []
-                            this.correcAnswers = []
-
-                            //console.log("userAnswer")
-                            //console.log(this.userAnswers)
-                            //console.log("correctAnwser")
-                            //console.log(this.correcAnswers)               
-                        })
-
+                    if(clickCount < 1){
+                        this.saveUserAnswer(newAnswers,i)
+                        this.getUserFacit(newAnswers,i)
                         newAnswers.style.backgroundColor =  "rgba(65, 105, 225, 0.5)"
-                        
-                        this.userAnswers.push(Object.values(this.questionsArray[this.count].correctAnswers)[i])                        
-                        anotherCount++  
-                        
-                        for(let answer of Object.values(this.questionsArray[this.count].correctAnswers)){
-                            if(answer == "true" && anotherCount < 2 ){ 
-                                this.correcAnswers.push(answer)
-                            }
-                        }
-                        
-                        //console.log("userAnswer")
-                        //console.log(this.userAnswers)
-                        //console.log("correctAnwser")
-                        //console.log( this.correcAnswers)
-                        
                     }
+                    ++clickCount
                 })
             }
         }
-        shownQuestion.innerHTML = this.questionsArray[this.count].question;
-        if(whatToReturn == "userAnswer"){
-            console.log("answer")
-            //console.log(this.userAnswers)
-            //console.log(this.correcAnswers)
-            return this.userAnswers
-        }
-        else if(whatToReturn == "correcAnswers"){
-            console.log("correct")
-            return this.correcAnswers
-        }
+        this.count++
     }
-    getUserAnswer(){
-        this.correcAnswer = this.setNewQuestion("correcAnswers")
+    saveUserAnswer(newAnswers, i){
+        this.userAnswers.push(Object.values(this.questionsArray[this.count-1].correctAnswers)[i])
         console.log(this.userAnswers)
         return this.userAnswers
     }
-
-    getCorrectAnswer(){
-        
-        this.correcAnswer = this.setNewQuestion("correcAnswers")
-        console.log(this.correcAnswers)
-        return this.correcAnswer
+    getUserFacit(newAnswers, i){
+       
+        let facit = Object.values(this.questionsArray[this.count-1].correctAnswers).filter(questionsArray => questionsArray.includes("true"));
+        if(this.usarAnswerFacit.length < 1){
+            for(let current of facit){
+                this.usarAnswerFacit.push(current)
+            }
+        }
+        return this.usarAnswerFacit
     }
-
-    //checkIfCorrect(userAnswers, correctAnswers){
-    //    console.log("Hej")
-    //    console.log(userAnswers + correctAnswers)
-    //    if(userAnswers === correctAnswers){
-    //        console.log("rätt!")
-    //        console.log(userAnswers)
-    //    }
-    //    else{
-    //        console.log("inte lika")
-    //    }
-    //}
-////
 }
+
+//resetBtn.addEventListener("click", e =>{
+//    clickCount = 0; 
+//    anotherCount = 0; 
+//    newAnswers.style.backgroundColor = "rgba(182, 182, 182, 0.459)";
+//    this.userAnswers = []
+//    this.usarAnswerFacit = []   
+//})
