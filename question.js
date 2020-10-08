@@ -9,7 +9,8 @@ class Question {
 class QuestionClass {
     constructor(questionsArray) {
         this.questionsArray = [];
-        this.count = 0; 
+        this.count = 0;
+        this.i;
         
         
         for (let question of questionsArray) {
@@ -27,6 +28,7 @@ class QuestionClass {
         resetBtn.value ="reset"
 
         shownAnswersUl.innerHTML = ""
+
         for(let i = 0; i < Object.values(this.questionsArray[this.count].answers).length; ++i){
             if(Object.values(this.questionsArray[this.count].answers)[i] != null){
                 let newAnswers = document.createElement("li");
@@ -35,13 +37,32 @@ class QuestionClass {
                 
                 newAnswers.innerHTML = Object.values(this.questionsArray[this.count].answers)[i]
                 
+                let anotherCount = 0; 
+
                 newAnswers.addEventListener("click", e => {
-                        player.getPlayerAnswers()
+                    if(anotherCount < 1){
+                        //this.getPlayerAnswers(i)
+                        this.getPlayerAnswerFacit()
                         newAnswers.style.backgroundColor =  "rgba(65, 105, 225, 0.5)"
+                        ++anotherCount
+                    }
                 })
             }
         }
         this.count++
+    }
+    getPlayerAnswers(i){
+        player.playerAnswer.push(Object.values(this.questionsArray[this.count-1].correctAnswers)[i])
+        console.log(player.playerAnswer)
+    }
+    getPlayerAnswerFacit(){
+        let myArr = Object.values(this.questionsArray[this.count-1].correctAnswers).filter(answer =>{
+            1 < 2
+            return answer
+        })
+        //console.log(myArr)
+        console.log(Object.values(this.questionsArray[this.count-1].correctAnswers).includes("true"))
+        //console.log(player.PlayerAnswerFacit)
     }
     
 }

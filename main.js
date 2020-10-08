@@ -13,6 +13,7 @@ document.addEventListener("DOMContentLoaded", async function (e) {
         }
         if(clickCount == 1){
             player.getPlayerName()
+            console.log(player.playerAnswer)
         }
     })
 
