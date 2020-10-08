@@ -56,12 +56,10 @@ class QuestionClass {
         console.log(player.playerAnswer)
     }
     getPlayerAnswerFacit(){
-        let myArr = Object.values(this.questionsArray[this.count-1].correctAnswers).filter(answer =>{
-            1 < 2
-            return answer
-        })
-        //console.log(myArr)
-        console.log(Object.values(this.questionsArray[this.count-1].correctAnswers).includes("true"))
+        let myArr = Object.values(this.questionsArray[this.count-1].correctAnswers).filter(answer => answer.includes("true"))
+        
+        //console.log(Object.values(this.questionsArray[this.count-1].correctAnswers).includes("true"))
+        //let facit = Object.values(questionsArray[count-1].correctAnswers).filter(questionsArray => questionsArray.includes("true"))
         //console.log(player.PlayerAnswerFacit)
     }
     
