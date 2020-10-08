@@ -6,4 +6,5 @@ function getQuestions() {
         return questions;
     });
 }
+
 // Fetch returnerar promise, question = promise.

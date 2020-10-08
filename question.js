@@ -10,8 +10,7 @@ class QuestionClass {
     constructor(questionsArray) {
         this.questionsArray = [];
         this.count = 0; 
-        this.userAnswers = [];
-        this.usarAnswerFacit = [];
+        
         
         for (let question of questionsArray) {
             this.questionsArray.push(new Question(question));   
@@ -37,6 +36,7 @@ class QuestionClass {
                 newAnswers.innerHTML = Object.values(this.questionsArray[this.count].answers)[i]
                 
                 newAnswers.addEventListener("click", e => {
+                        player.getPlayerAnswers()
                         newAnswers.style.backgroundColor =  "rgba(65, 105, 225, 0.5)"
                 })
             }

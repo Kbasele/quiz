@@ -8,7 +8,6 @@ document.addEventListener("DOMContentLoaded", async function (e) {
         e.target.innerHTML = "next"
         ++clickCount
 
-
         if(clickCount > 0){
             questions.setNewQuestion()
         }
