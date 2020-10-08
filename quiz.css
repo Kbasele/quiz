@@ -53,9 +53,11 @@ body{
     height: 660px;
     justify-content: space-around;
 }
+
 #nameDiv{
     display: flex;
     justify-content: center;
+    
     
 }
 #nameDiv input{
@@ -64,6 +66,36 @@ body{
     text-align: center;
     border-radius: 20px;
     border-style: solid;
+}
+#num-quest{
+    margin-bottom: 30px;
+    display: flex; 
+    justify-content: center;
+    
+}
+#num-questions{
+    display: flex; 
+    justify-content: center;
+    
+}
+#num-questions div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(182, 182, 182, 0.459);
+
+    margin: 0 10px; 
+    list-style: none;
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    transition: 0.3s;
+
+}
+
+#num-questions div:hover{
+    background-color: rgba(65, 105, 225, 0.5);
+    transition: 0.3s;
 }
 .asked-question{
     display: flex;
@@ -74,6 +106,9 @@ body{
     height: 65px;
 }
 
+.answers{
+    
+}
 .answers li{
     display: flex;
     align-items: center;
@@ -128,7 +163,8 @@ body{
     align-items: center;
     justify-content: center;
     background-color: rgba(182, 182, 182, 0.459);
-    margin: 0 20px; 
+
+    margin: 0 10px; 
     list-style: none;
     width: 35px;
     height: 35px;

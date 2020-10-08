@@ -9,7 +9,7 @@
   <body>
     <div class="container">
       <div class="container-header">
-        <p>Quiz</p>
+        <p id="quiz">Quiz</p>
       </div>
       <hr />
       <div class="container-body">
@@ -19,7 +19,22 @@
         <div id="nameDiv">
           <input id="nameDivInput" type="text" placeholder="Enter Your name">
         </div>
-        <div class="answers">
+        
+        <div id="num">
+          <div id="num-quest">
+            <p>Choose number of questions</p>
+          </div>
+          <div id="num-questions">
+            <div class="num-question">5</div>
+            <div class="num-question">6</div>
+            <div class="num-question">7</div>
+            <div class="num-question">8</div>
+            <div class="num-question">9</div>
+            <div class="num-question">10</div>
+          </div>
+        </div>
+        
+        <div class="answers" id="question-answers">
           <ul id="shown-Answers"></ul>
         </div>
         <div class="button-area">
@@ -27,11 +42,7 @@
         </div>
       </div>
       <hr />
-      <div class="container-footer">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+      <div id="container-footer" class="container-footer">
       </div>
     </div>
     <script src="question.js"></script>

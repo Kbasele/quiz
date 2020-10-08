@@ -12,8 +12,7 @@ class QuestionClass {
         this.count = 0;
         this.i;
         
-        
-        for (let question of questionsArray) {
+            for (let question of questionsArray) {
             this.questionsArray.push(new Question(question));   
         }      
     }
@@ -21,8 +20,11 @@ class QuestionClass {
         let shownQuestion = document.getElementById("shown-question");
         let shownAnswersUl = document.getElementById("shown-Answers");
 
-        shownQuestion.innerHTML = this.questionsArray[this.count].question;
-
+        let numOfqsn = document.getElementById("num")
+        numOfqsn.setAttribute("class", "hidden")
+        
+            shownQuestion.innerHTML = this.questionsArray[this.count].question;
+        
         let resetBtn = document.createElement("input")
         resetBtn.type ="button"
         resetBtn.value ="reset"
@@ -40,35 +42,44 @@ class QuestionClass {
                 let anotherCount = 0; 
 
                 newAnswers.addEventListener("click", e => {
+                    console.log()
                     if(anotherCount < 1){
-                        //this.getPlayerAnswers(i)
+                        this.getPlayerAnswers(i)
                         this.getPlayerAnswerFacit()
+                        console.log(player.playerAnswer)
+                        console.log(player.PlayerAnswerFacit)
                         newAnswers.style.backgroundColor =  "rgba(65, 105, 225, 0.5)"
                         ++anotherCount
+                        resetBtn.addEventListener("click", e => {
+                            anotherCount = 0;
+                            game.resetUseranwers()
+                            newAnswers.style.backgroundColor =  "rgba(182, 182, 182, 0.459)"
+                        })
                     }
                 })
+                
             }
+            
         }
+        
         this.count++
+        
     }
     getPlayerAnswers(i){
         player.playerAnswer.push(Object.values(this.questionsArray[this.count-1].correctAnswers)[i])
-        console.log(player.playerAnswer)
+        return player.playerAnswer
     }
     getPlayerAnswerFacit(){
         let myArr = Object.values(this.questionsArray[this.count-1].correctAnswers).filter(answer => answer.includes("true"))
-        
-        //console.log(Object.values(this.questionsArray[this.count-1].correctAnswers).includes("true"))
-        //let facit = Object.values(questionsArray[count-1].correctAnswers).filter(questionsArray => questionsArray.includes("true"))
-        //console.log(player.PlayerAnswerFacit)
+        if(player.PlayerAnswerFacit<1){
+            for(let current of myArr){
+                player.PlayerAnswerFacit.push(current)
+            }
+        }
+        return player.PlayerAnswerFacit
     }
+    
+    
     
 }
 
-//resetBtn.addEventListener("click", e =>{
-//    clickCount = 0; 
-//    anotherCount = 0; 
-//    newAnswers.style.backgroundColor = "rgba(182, 182, 182, 0.459)";
-//    this.userAnswers = []
-//    this.usarAnswerFacit = []   
-//})
