@@ -1,26 +1,35 @@
 document.addEventListener("DOMContentLoaded", async function (e) {
 
     let questions = await getQuestions();
-    let clickCount = 0; 
 
     game.setNumOfQuestions()
-    
+
     document.getElementById("question-btn").addEventListener("click", function(e){
+        game.turn++
+        console.log(game.turn)
+        
         e.target.innerHTML = "next"
         game.showCurrentQuestion()
-        ++clickCount
-        if(clickCount <= 10){
+        
+        if(game.turn <= 10){
             questions.setNewQuestion()
         }
-        if(clickCount == 1){
+        if(game.turn == 1){
+            game.hideNumOfQuestions()
             player.getPlayerName()
         }
-        if(clickCount>1){
+        if(game.turn>1){
+            
             game.checkIfCorrect()
             game.resetUseranwers()
         }
-        if(clickCount == 11){
+        if(game.turn == 11){
             game.endGame()
+            game.showCurrentQuestion()
+            e.target.innerHTML = "Starta nytt spel"
+        }
+        if(game.turn == 11){
+            game.restart()
         }
     })
 });
