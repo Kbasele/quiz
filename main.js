@@ -4,34 +4,39 @@ document.addEventListener("DOMContentLoaded", async function (e) {
 
     game.setNumOfQuestions()
 
+    
     document.getElementById("question-btn").addEventListener("click", function(e){
-        game.turn++
-
-        e.target.innerHTML = "next"
-        game.showCurrentQuestion()
-        
-        if(game.turn <= Number(player.playerMountOfQuestsions)){
-            questions.setNewQuestion()
-        }
-        if(game.turn == 1){
-            game.hideNumOfQuestions()
-            player.getPlayerName()
-        }
-        if(game.turn>1){
+        if(game.clickCount>0){
             
-            game.checkIfCorrect()
-            game.resetUseranwers()
-        }
-        if(game.turn == Number(player.playerMountOfQuestsions)+1){
-            game.endGame()
+            game.turn++
+    
+            e.target.innerHTML = "next"
+    
             game.showCurrentQuestion()
-            e.target.innerHTML = "Starta nytt spel"
-        }
-        if(game.turn == Number(player.playerMountOfQuestsions)+2){
-            game.restart()
-        }
-        if(game.turn == Number(player.playerMountOfQuestsions)+3){
-            questions.setNewQuestion()
+    
+            if(game.turn <= Number(player.playerMountOfQuestsions)){
+                questions.setNewQuestion()
+            }
+            if(game.turn == 1){
+                game.hideNumOfQuestions()
+                player.getPlayerName()
+            }
+            if(game.turn>1){ 
+                game.checkIfCorrect()
+                game.resetUseranwers()
+            }
+            if(game.turn == Number(player.playerMountOfQuestsions)+1){
+                game.endGame()
+                game.showCurrentQuestion()
+                e.target.innerHTML = "Start new Game"
+            }
+            if(game.turn == Number(player.playerMountOfQuestsions)+2){
+                game.restart()
+                
+            }
+            if(game.turn == Number(player.playerMountOfQuestsions)+3){
+                questions.setNewQuestion()
+            }
         }
 
     })
