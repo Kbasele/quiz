@@ -21,11 +21,10 @@ class Game{
         }
     }
     checkIfCorrect(){
-        console.log(this.turn)
         this.containerFooter = document.getElementById("container-footer")
         this.circle = document.createElement("div")
         this.containerFooter.appendChild(this.circle)
-        this.circle.innerHTML = ++player.questionNr
+        this.circle.innerHTML = this.turn - 1
         
         
         if(JSON.stringify(player.playerAnswer) == JSON.stringify(player.PlayerAnswerFacit)){
@@ -34,7 +33,6 @@ class Game{
             return true
         }
         else{
-            console.log("fel")
             this.circle.style.backgroundColor = "rgb(225, 65, 65)"
             return false
         }
@@ -49,21 +47,21 @@ class Game{
         shownQuestion.innerHTML = "Good job " + player.playerName + "! you scored " + player.playerScore + "/" + player.playerMountOfQuestsions 
         body.setAttribute("class", "hidden")
 
-        
     }
     showCurrentQuestion(){
-        if(this.turn<11){
+        if(this.turn<=player.playerMountOfQuestsions){
             let header = document.getElementById("quiz")
-            header.innerHTML = this.turn + "/10"
+            header.innerHTML = this.turn + "/" + player.playerMountOfQuestsions
         }
     }
     restart(){
+        this.turn = 0
+        player.playerScore = 0 
         var child = this.containerFooter.lastElementChild;  
         while (child) { 
             this.containerFooter.removeChild(child); 
             child = this.containerFooter.lastElementChild; 
-        }
-        this.turn = 0
+        }    
         
     }
     

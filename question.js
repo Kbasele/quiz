@@ -55,7 +55,8 @@ class QuestionClass {
                     }
                 })   
             }  
-        }        
+        }
+        
     }
     getPlayerAnswers(i){
         player.playerAnswer.push(Object.values(this.questionsArray[game.turn-1].correctAnswers)[i])
