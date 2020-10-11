@@ -42,12 +42,14 @@ class Game{
         this.containerFooter.appendChild(this.circle)
         this.circle.innerHTML = this.turn - 1
         
-        if(JSON.stringify(playerAnswer) == JSON.stringify(PlayerAnswerFacit)){
+        if(JSON.stringify(playerAnswer) == JSON.stringify(PlayerAnswerFacit) && playerAnswer.length >0){
             this.circle.style.backgroundColor = "rgb(65, 225, 118)"
             ++player.playerScore
             return true
         }
+
         else{
+            console.log(playerAnswer.length)
             this.circle.style.backgroundColor = "rgb(225, 65, 65)"
             return false
         }

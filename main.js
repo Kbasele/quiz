@@ -16,6 +16,7 @@ document.addEventListener("DOMContentLoaded", async function (e) {
     
             if(game.turn <= Number(player.playerMountOfQuestsions)){
                 questions.setNewQuestion()
+                console.log(player.playerAnswer.length)
             }
             if(game.turn == 1){
                 game.hideNumOfQuestions()
