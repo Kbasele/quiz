@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", async function (e) {
                 player.getPlayerName()
             }
             if(game.turn>1){ 
-                game.checkIfCorrect()
+                game.checkIfCorrect(player.playerAnswer, player.PlayerAnswerFacit)
                 game.resetUseranwers()
             }
             if(game.turn == Number(player.playerMountOfQuestsions)+1){

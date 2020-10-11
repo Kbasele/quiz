@@ -17,17 +17,18 @@ class Game{
     setNumOfQuestions(){
         let numOfQuestions = document.querySelectorAll(".num-question")
         for(let num of numOfQuestions){
+            let anotherClickCount = 0;
             num.addEventListener("click", e => {
                 this.clickCount++
-                if(this.clickCount <2){
-                    console.log("hej")
-                    console.log(this.clickCount)
+                if(anotherClickCount <1 && this.clickCount <2){
+                    ++anotherClickCount
                     player.playerMountOfQuestsions = num.innerHTML
                     num.style.backgroundColor ="rgba(65, 105, 225, 0.5)"
                     num.innerHTML
                 }
-                else if(this.clickCount == 2){
-                    this.clickCount = 0
+                else if(anotherClickCount > 0){
+                    anotherClickCount = 0
+                    this.clickCount = 0; 
                     player.playerMountOfQuestsions = undefined;
                     num.style.backgroundColor ="rgba(182, 182, 182, 0.459)"
                     num.innerHTML
@@ -35,13 +36,13 @@ class Game{
             })
         }
     }
-    checkIfCorrect(){
+    checkIfCorrect(playerAnswer, PlayerAnswerFacit ){
         this.containerFooter = document.getElementById("container-footer")
         this.circle = document.createElement("div")
         this.containerFooter.appendChild(this.circle)
         this.circle.innerHTML = this.turn - 1
         
-        if(JSON.stringify(player.playerAnswer) == JSON.stringify(player.PlayerAnswerFacit)){
+        if(JSON.stringify(playerAnswer) == JSON.stringify(PlayerAnswerFacit)){
             this.circle.style.backgroundColor = "rgb(65, 225, 118)"
             ++player.playerScore
             return true
