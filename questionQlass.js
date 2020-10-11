@@ -1,7 +1,8 @@
+
+//klass som hanterar alla frågor
 class QuestionClass {
     constructor(questionsArray) {
         this.questionsArray = [];
-        game.turn = 0;
         this.i;
         
             for (let question of questionsArray) {
@@ -9,6 +10,7 @@ class QuestionClass {
         }      
     }
     
+    //Metod som visar frågorna och gör så att man kan klicka på de olika svars alternativen. 
     setNewQuestion() { 
         let shownQuestion = document.getElementById("shown-question");
         let shownAnswersUl = document.getElementById("shown-Answers");
@@ -50,10 +52,12 @@ class QuestionClass {
         }
         
     }
+    //Metod som sparar användarens svar
     getPlayerAnswers(i){
         player.playerAnswer.push(Object.values(this.questionsArray[game.turn-1].correctAnswers)[i])
         return player.playerAnswer
     }
+    //Metod som hämtar svaren till användarens svar och pushar in dem till en array
     getPlayerAnswerFacit(){
         let myArr = Object.values(this.questionsArray[game.turn-1].correctAnswers).filter(answer => answer.includes("true"))
         if(player.PlayerAnswerFacit<1){
@@ -64,3 +68,6 @@ class QuestionClass {
         return player.PlayerAnswerFacit
     }  
 }
+
+
+

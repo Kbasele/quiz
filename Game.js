@@ -1,3 +1,4 @@
+//Klassen game sköter flödet av själva spelet 
 class Game{
     constructor(){
         this.turn = 0;
@@ -8,12 +9,12 @@ class Game{
         this.header;
         this.clickCount = 0; 
     }
-    
+    // Gömmer alternativet för hur många frågor som ska visas
     hideNumOfQuestions(){
-
         this.numOfqsn = document.getElementById("num")
         this.numOfqsn.setAttribute("class", "hidden")
     }
+    //Tar användarens val av hur många frågor som ska visas
     setNumOfQuestions(){
         let numOfQuestions = document.querySelectorAll(".num-question")
         for(let num of numOfQuestions){
@@ -24,18 +25,17 @@ class Game{
                     ++anotherClickCount
                     player.playerMountOfQuestsions = num.innerHTML
                     num.style.backgroundColor ="rgba(65, 105, 225, 0.5)"
-                    num.innerHTML
                 }
                 else if(anotherClickCount > 0){
                     anotherClickCount = 0
                     this.clickCount = 0; 
                     player.playerMountOfQuestsions = undefined;
                     num.style.backgroundColor ="rgba(182, 182, 182, 0.459)"
-                    num.innerHTML
                 }
             })
         }
     }
+    //Rättar användarens svar
     checkIfCorrect(playerAnswer, PlayerAnswerFacit ){
         this.containerFooter = document.getElementById("container-footer")
         this.circle = document.createElement("div")
@@ -49,21 +49,22 @@ class Game{
         }
 
         else{
-            console.log(playerAnswer.length)
             this.circle.style.backgroundColor = "rgb(225, 65, 65)"
             return false
         }
     }
+    //Återställer användarens svar
     resetUseranwers(){
         player.playerAnswer = []
         this.usarAnswerFacit = [] 
     }   
+    //avslutar spelet
     endGame(){
         let body = document.getElementById("shown-Answers")
         this.shownQuestion = document.getElementById("shown-question");
         this.header.innerHTML = ""
         this.shownQuestion.innerHTML = "Good job " + player.playerName + "! you scored " + player.playerScore + "/" + player.playerMountOfQuestsions 
-        //body.setAttribute("class", "hidden")
+        body.setAttribute("class", "hidden")
 
         let child = body.lastElementChild;  
         while (child) { 
@@ -72,12 +73,14 @@ class Game{
         }
 
     }
+    //Visar vilken fråga som användaren är på
     showCurrentQuestion(){
         if(this.turn<=player.playerMountOfQuestsions){
             this.header = document.getElementById("quiz")
             this.header.innerHTML = this.turn + "/" + player.playerMountOfQuestsions
         }
     }
+    //Startar om spelet 
     restart(){
         this.turn = 0
         player.playerScore = 0 
