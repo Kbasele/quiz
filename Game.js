@@ -92,8 +92,9 @@ class Game{
             child = this.containerFooter.lastElementChild; 
         }      
     }
+    //Hämtar frågorna från api
     getQuestions() {
-        return fetch("https://quizapi.io/api/v1/questions?apiKey=CgSd9j96n4XlAAfeYchpItsVhznIFdTUcsYFiEny&limit=1000")
+        return fetch("https://quizapi.io/api/v1/questions?apiKey=CgSd9j96n4XlAAfeYchpItsVhznIFdTUcsYFiEny&limit=10")
         .then((response) => response.json())
         .then((fetchedData) => {
             let questions = new QuestionClass(fetchedData);

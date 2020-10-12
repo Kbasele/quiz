@@ -1,16 +1,20 @@
 document.addEventListener("DOMContentLoaded", async function (e) {
     
     //skapar objekt med alla värden från apit
-    let questions = await game.getQuestions();
+    //let questions = await game.getQuestions();
 
 
     //Tar användarens val av hur många frågor som ska visas
     game.setNumOfQuestions()
-
+    let questions; 
     
     //håller koll på submitknappet
-    document.getElementById("question-btn").addEventListener("click", function(e){
+    document.getElementById("question-btn").addEventListener("click", async function(e){
 
+        if(game.turn < 1){
+            questions = await game.getQuestions();
+        }
+        console.log(questions)
         if(game.clickCount>0){
             
             //håller koll på vilken runda vi är på

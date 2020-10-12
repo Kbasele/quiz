@@ -3,7 +3,7 @@
 class QuestionClass {
     constructor(questionsArray) {
         this.questionsArray = [];
-        this.i;
+        this.i = 0;
         
             for (let question of questionsArray) {
             this.questionsArray.push(new Question(question));   
@@ -12,11 +12,10 @@ class QuestionClass {
     
     //Metod som visar frågorna och gör så att man kan klicka på de olika svars alternativen. 
     setNewQuestion() { 
-        game.PlayerAnswerFacit = [];
         let shownQuestion = document.getElementById("shown-question");
         let shownAnswersUl = document.getElementById("shown-Answers");
         
-        shownQuestion.innerText = this.questionsArray[game.turn].question;
+        shownQuestion.innerText = this.questionsArray[game.turn-1].question;
         
         let resetBtn = document.createElement("input")
         resetBtn.type ="button"
@@ -24,13 +23,13 @@ class QuestionClass {
 
         shownAnswersUl.innerHTML = ""
 
-        for(let i = 0; i < Object.values(this.questionsArray[game.turn].answers).length; ++i){
-            if(Object.values(this.questionsArray[game.turn].answers)[i] != null){
+        for(let i = 0; i < Object.values(this.questionsArray[game.turn-1].answers).length; ++i){
+            if(Object.values(this.questionsArray[game.turn-1].answers)[i] != null){
                 let newAnswers = document.createElement("li");
                 shownAnswersUl.appendChild(newAnswers)
                 shownAnswersUl.appendChild(resetBtn)
                 
-                newAnswers.innerText = Object.values(this.questionsArray[game.turn].answers)[i]
+                newAnswers.innerText = Object.values(this.questionsArray[game.turn-1].answers)[i]
                 
                 let anotherCount = 0; 
 
@@ -55,12 +54,12 @@ class QuestionClass {
     }
     //Metod som sparar användarens svar
     getPlayerAnswers(i){  
-        player.playerAnswer.push(Object.values(this.questionsArray[game.turn].correctAnswers)[i])
+        player.playerAnswer.push(Object.values(this.questionsArray[game.turn-1].correctAnswers)[i])
     }
     //Metod som hämtar svaren till användarens svar och pushar in dem till en array
     getPlayerAnswerFacit(){
         player.PlayerAnswerFacit = []
-        let myArr = Object.values(this.questionsArray[game.turn].correctAnswers).filter(answer => answer.includes("true"))
+        let myArr = Object.values(this.questionsArray[game.turn-1].correctAnswers).filter(answer => answer.includes("true"))
         if(player.PlayerAnswerFacit<1){
             for(let current of myArr){
                 player.PlayerAnswerFacit.push(current)
