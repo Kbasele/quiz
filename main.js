@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", async function (e) {
     
     //skapar objekt med alla värden från apit
-    let questions = await getQuestions();
+    let questions = await game.getQuestions();
 
 
     //Tar användarens val av hur många frågor som ska visas

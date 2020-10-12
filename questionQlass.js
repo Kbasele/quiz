@@ -15,7 +15,7 @@ class QuestionClass {
         let shownQuestion = document.getElementById("shown-question");
         let shownAnswersUl = document.getElementById("shown-Answers");
         
-        shownQuestion.innerHTML = this.questionsArray[game.turn].question;
+        shownQuestion.innerText = this.questionsArray[game.turn].question;
         
         let resetBtn = document.createElement("input")
         resetBtn.type ="button"
@@ -29,7 +29,7 @@ class QuestionClass {
                 shownAnswersUl.appendChild(newAnswers)
                 shownAnswersUl.appendChild(resetBtn)
                 
-                newAnswers.innerHTML = Object.values(this.questionsArray[game.turn].answers)[i]
+                newAnswers.innerText = Object.values(this.questionsArray[game.turn].answers)[i]
                 
                 let anotherCount = 0; 
 
@@ -65,6 +65,7 @@ class QuestionClass {
             }
         }
     }  
+    
 }
 
 
