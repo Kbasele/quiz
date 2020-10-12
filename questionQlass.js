@@ -12,6 +12,7 @@ class QuestionClass {
     
     //Metod som visar frågorna och gör så att man kan klicka på de olika svars alternativen. 
     setNewQuestion() { 
+        game.PlayerAnswerFacit = [];
         let shownQuestion = document.getElementById("shown-question");
         let shownAnswersUl = document.getElementById("shown-Answers");
         
@@ -53,12 +54,13 @@ class QuestionClass {
         
     }
     //Metod som sparar användarens svar
-    getPlayerAnswers(i){
-        player.playerAnswer.push(Object.values(this.questionsArray[game.turn-1].correctAnswers)[i])
+    getPlayerAnswers(i){  
+        player.playerAnswer.push(Object.values(this.questionsArray[game.turn].correctAnswers)[i])
     }
     //Metod som hämtar svaren till användarens svar och pushar in dem till en array
     getPlayerAnswerFacit(){
-        let myArr = Object.values(this.questionsArray[game.turn-1].correctAnswers).filter(answer => answer.includes("true"))
+        player.PlayerAnswerFacit = []
+        let myArr = Object.values(this.questionsArray[game.turn].correctAnswers).filter(answer => answer.includes("true"))
         if(player.PlayerAnswerFacit<1){
             for(let current of myArr){
                 player.PlayerAnswerFacit.push(current)
