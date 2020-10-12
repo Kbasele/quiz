@@ -64,7 +64,6 @@ class Game{
         this.shownQuestion = document.getElementById("shown-question");
         this.header.innerHTML = ""
         this.shownQuestion.innerHTML = "Good job " + player.playerName + "! you scored " + player.playerScore + "/" + player.playerMountOfQuestsions 
-        body.setAttribute("class", "hidden")
 
         let child = body.lastElementChild;  
         while (child) { 

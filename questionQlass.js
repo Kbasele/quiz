@@ -55,7 +55,6 @@ class QuestionClass {
     //Metod som sparar användarens svar
     getPlayerAnswers(i){
         player.playerAnswer.push(Object.values(this.questionsArray[game.turn-1].correctAnswers)[i])
-        return player.playerAnswer
     }
     //Metod som hämtar svaren till användarens svar och pushar in dem till en array
     getPlayerAnswerFacit(){
@@ -65,7 +64,6 @@ class QuestionClass {
                 player.PlayerAnswerFacit.push(current)
             }
         }
-        return player.PlayerAnswerFacit
     }  
 }
 

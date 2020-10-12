@@ -39,7 +39,6 @@ document.addEventListener("DOMContentLoaded", async function (e) {
             //Avslutar spel och visar poäng och ger spelaren möjlighet att starta om 
             if(game.turn == Number(player.playerMountOfQuestsions)+1){
                 game.endGame()
-                game.showCurrentQuestion()
                 e.target.innerHTML = "Start new Game"
             }
             //nollställer poängen 
@@ -51,8 +50,6 @@ document.addEventListener("DOMContentLoaded", async function (e) {
             if(game.turn == Number(player.playerMountOfQuestsions)+3){
                 questions.setNewQuestion()
             }
-            console.log(game.clickCount)
-            console.log(game.turn)
         }
 
     })
